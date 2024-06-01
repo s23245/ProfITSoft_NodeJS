@@ -5,7 +5,7 @@ import {
   updateStudent,
   listStudentsByGroupId,
   search,
-} from 'src/controllers/students';
+} from '../../controllers/students';
 
 const router = express.Router();
 

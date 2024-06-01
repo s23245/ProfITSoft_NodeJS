@@ -1,6 +1,6 @@
-import Group, { IGroup } from 'src/model/group';
-import { GroupSaveDto } from 'src/dto/group/groupSaveDto';
-import { GroupDto } from 'src/dto/group/groupDto';
+import Group, { IGroup } from '../../model/group';
+import { GroupSaveDto } from '../../dto/group/groupSaveDto';
+import { GroupDto } from '../../dto/group/groupDto';
 
 export const listGroups = async (): Promise<GroupDto[]> => {
   const groups = await Group.find({});

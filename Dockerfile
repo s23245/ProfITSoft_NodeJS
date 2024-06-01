@@ -19,3 +19,13 @@ WORKDIR /app
 COPY --from=production-dependencies /app .
 COPY --from=builder /app/dist /app/dist
 CMD [ "node", "dist/index.js" ]
+
+
+FROM node:18-alpine
+WORKDIR /app
+RUN apk update && apk add curl
+COPY package*.json ./
+RUN npm install
+COPY . .
+EXPOSE 8888
+CMD ["npm", "start"]

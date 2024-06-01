@@ -7,10 +7,10 @@ import {
   listStudentsByGroupId as listStudentsByGroupIdApi,
   search as searchApi,
   updateStudent as updateStudentApi,
-} from 'src/services/student';
-import { StudentQueryDto } from 'src/dto/student/studentQueryDto';
-import { StudentSaveDto } from 'src/dto/student/studentSaveDto';
-import { InternalError } from 'src/system/internalError';
+} from '../../services/student';
+import { StudentQueryDto } from '../../dto/student/studentQueryDto';
+import { StudentSaveDto } from '../../dto/student/studentSaveDto';
+import { InternalError } from '../../system/internalError';
 
 export const getStudent = async (req: Request, res: Response) => {
   const id = req.params.id as string;

@@ -1,4 +1,4 @@
-import { QueryDto } from 'src/dto/queryDto';
+import { QueryDto } from '../queryDto';
 
 export class StudentQueryDto extends QueryDto {
   name?: string;

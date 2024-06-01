@@ -11,6 +11,9 @@ services:
       - app-network
     environment:
       - NODE_ENV=prod
+      - CONSUL_HOST=consul
+      - CONSUL_PORT=8500
+
   db:
     image: mongo:5.0.14
     ports:
@@ -19,10 +22,11 @@ services:
       - ./docker/data/mongo/db:/data/db
     networks:
       - app-network
+
   consul:
     image: consul:1.15.2
     ports:
-      - '8501:8500'
+      - '8500:8500'
     volumes:
       - ./docker/data/consul/data:/consul/data
       - ./docker/data/consul/config:/consul/config
@@ -34,10 +38,17 @@ services:
       - -c
       - |
         consul agent -server -ui -bind 0.0.0.0 -client 0.0.0.0 -data-dir /consul/data -config-dir /consul/config -bootstrap -datacenter docker &
-        consul_pid=$!
+        consul_pid=$$!
         sleep 5
         consul kv import -http-addr=http://0.0.0.0:8500 @/resources/consul/consul-config-kv.json
-        wait $consul_pid
+        wait $$consul_pid
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8500/v1/status/leader" ]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+
+
 
 networks:
   app-network:

@@ -4,9 +4,9 @@ import { Request, Response } from 'express';
 import {
   listGroups as listGroupsApi,
   saveGroup as saveGroupApi,
-} from 'src/services/group';
-import { GroupSaveDto } from 'src/dto/group/groupSaveDto';
-import { InternalError } from 'src/system/internalError';
+} from '../../services/group';
+import { GroupSaveDto } from '../../dto/group/groupSaveDto';
+import { InternalError } from '../../system/internalError';
 
 export const listGroups = async (_: Request, res: Response) => {
   try {

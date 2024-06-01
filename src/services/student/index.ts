@@ -1,10 +1,10 @@
 import mongoose from 'mongoose';
-import Group from 'src/model/group';
-import Student, { IStudent } from 'src/model/student';
-import { StudentSaveDto } from 'src/dto/student/studentSaveDto';
-import { StudentDetailsDto } from 'src/dto/student/studentDetailsDto';
-import { StudentInfoDto } from 'src/dto/student/studentInfoDto';
-import { StudentQueryDto } from 'src/dto/student/studentQueryDto';
+import Group from '../../model/group';
+import Student, { IStudent } from '../../model/student';
+import { StudentSaveDto } from '../../dto/student/studentSaveDto';
+import { StudentDetailsDto } from '../../dto/student/studentDetailsDto';
+import { StudentInfoDto } from '../../dto/student/studentInfoDto';
+import { StudentQueryDto } from '../../dto/student/studentQueryDto';
 
 export const createStudent = async (
   studentDto: StudentSaveDto
